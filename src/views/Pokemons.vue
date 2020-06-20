@@ -1,12 +1,11 @@
 <template lang='pug'>
-  v-app
-    router-view
+  h1 Pokémons
 </template>
 
 <script>
 
 export default {
-  name: 'app',
+  name: 'pokemons',
 
   data: () => ({
     //
