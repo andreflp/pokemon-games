@@ -2,7 +2,9 @@
 	div
 		toolbar
 		v-main(style='padding: 15px 100px 0px 100px;')
-			router-view
+			v-content
+				transition(name='fade' mode='out-in')
+					router-view
 </template>
 
 <script>
@@ -16,9 +18,3 @@ export default {
 
 }
 </script>
-
-<style scoped>
-.app-container {
-  padding: 10px;
-}
-</style>

@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Decorator from '../views/Decorator.vue'
 
 Vue.use(VueRouter)
 
@@ -18,7 +17,9 @@ function route(path, file, name, title, children) {
 const routes = [
   route('/', 'views/Decorator', '', 'Decorator', [
     route('', 'views/Generations', 'Generations', 'Generations'),
-    route('/pokemons', 'views/Pokemons', 'Pokémons', 'Pokémons'),
+    route('/generation/:id', 'views/Generation', 'Generation', 'Generation'),
+    route('/generation/:id/games', 'views/Games', 'Games', 'Games'),
+    route('/generation/:id/pokemons', 'views/Pokemons', 'Pokémons', 'Pokémons'),
   ])
 ]
 
