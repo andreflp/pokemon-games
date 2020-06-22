@@ -1,29 +1,29 @@
-# Pokemon Games
+# Pokémon Games
 
-## Project setup
+> Application to see all the generations of pokémons and games.
+
+# Features:
+  - List of Pokémon generations and games
+  - List of games of each generation
+  - List of pokémons of each generation with images
+  - Filter of pokémons, generations and games
+
+### Run application locally
 ```
+yarn serve
 yarn install
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
+### Build for production
 ```
 yarn build
 ```
 
-### Run your unit tests
+### Run unit tests
 ```
 yarn test:unit
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
