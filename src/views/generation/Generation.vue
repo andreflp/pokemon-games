@@ -1,12 +1,7 @@
 <template lang='pug'>
   v-layout(row wrap)
     v-flex(xs12 pa-xl-11 pa-lg-6 pa-md-6 pa-sm-10 pa-xs-10)
-      v-skeleton-loader(
-        :loading='loading'
-        width='200'
-        type="text"
-      )
-        h3 {{ generation.name.toUpperCase() }}
+      h3 Generation Info
     v-flex(
       v-if='loading'
       xl3 lg4 md6 sm12 xs12
@@ -29,9 +24,8 @@
         v-if='showCards'
         :id='card.route'
         :title='card.name' 
-        :subtitle='`${card.subtitle} ${generation.name}`' 
+        :subtitle='generation.name' 
         :callback='goToRoute'
-        info='See More'
       )
 </template>
 
@@ -55,10 +49,7 @@ export default {
 		loading: false,
 		showCards: true,
     generation: '',
-    cards: [
-      { name: 'Games', route: 'games', subtitle: 'Games of' },
-      { name: 'Pokémons', route: 'pokemons', subtitle: 'Pokémons of' }
-    ]
+    cards: []
 	}),
 	
 	mounted() {
@@ -67,16 +58,21 @@ export default {
 
 	methods: {
 		async fetchGeneration() {
+      this.$Progress.start()
 			this.loading = true
 			const url = `${process.env.VUE_APP_API_URL}/generation/${this.id}`
 
       const payload = await axios.get(url)
 
-			this.generation = payload.data
+      this.generation = payload.data
+      this.cards = [
+        { name: 'Games', route: 'games', subtitle: 'Games of' },
+        { name: 'Pokémons', route: 'pokemons', subtitle: 'Pokémons of' }
+      ]
 			this.loading = false
       this.showCards = true
+      this.$Progress.finish()
 		},
-
 
 		goToRoute(route) {
 			this.$router.push(`/generation/${this.id}/${route}`)

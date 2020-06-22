@@ -16,10 +16,10 @@ function route(path, file, name, title, children) {
 
 const routes = [
   route('/', 'views/Decorator', '', 'Decorator', [
-    route('', 'views/Generations', 'Generations', 'Generations'),
-    route('/generation/:id', 'views/Generation', 'Generation', 'Generation'),
-    route('/generation/:id/games', 'views/Games', 'Games', 'Games'),
-    route('/generation/:id/pokemons', 'views/Pokemons', 'Pokémons', 'Pokémons'),
+    route('', 'views/generation/Generations', 'Generations', 'Generations'),
+    route('/generation/:id', 'views/generation/Generation', 'Generation', 'Generation'),
+    route('/generation/:id/games', 'views/game/Games', 'Games', 'Games'),
+    route('/generation/:id/pokemons', 'views/pokemon/Pokemons', 'Pokémons', 'Pokémons'),
   ])
 ]
 

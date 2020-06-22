@@ -13,7 +13,7 @@
 						max-height='80px'
 					)
 			v-card-actions(v-if='actions')
-				v-btn(text color='red darken-4' @click='callback(id)') {{ info }}
+				v-btn(text color='red darken-4' @click='callback(id)') See More
 					v-icon(right dark) arrow_right_alt
 </template>
 
@@ -25,26 +25,26 @@ export default {
 	props: {
 		title: {
 			type: String,
-			required: true
+			required: true,
+			default: ''
 		},
 		subtitle: {
 			type: String,
-			required: false
+			required: false,
+			default: ''
 		},
 		id: {
 			type: [Number, String],
-			required: false
+			default: ''
 		},
 		callback: {
 			type: Function,
-			required: true
+			required: false,
+			default: () => {}
 		},
 		img: {
-			type: String
-		},
-		info: {
 			type: String,
-			required: true
+			default: ''
 		},
 		actions: {
 			type: Boolean,

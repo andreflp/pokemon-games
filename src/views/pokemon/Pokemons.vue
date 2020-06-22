@@ -13,6 +13,7 @@
         v-model='filter'
         color='red darken-4'
         append-icon='search'
+        :disabled='loading'
         @input='filterPokemons'
       )
     v-flex(v-if='filter' xs4 offset-xs4 pa-xl-12 pa-lg-6 pa-md-6 pa-sm-10 pa-xs-10)   
@@ -32,7 +33,7 @@
     )
       v-skeleton-loader(
         :loading="loading"
-        height="170"
+        height="115"
         type="card"
       )
     v-flex(
@@ -46,9 +47,8 @@
         :id='pokemon.id'
         :title='pokemon.name' 
         :subtitle='generation' 
-        :callback='fetchPokemons'
+        :actions='false'
         :img='pokemon.sprites.front_default'
-        info='Pokémon info'
       )
 </template>
 
@@ -74,7 +74,8 @@ export default {
     pokemons: [],
     filter: '',
     filtered: [],
-    generation: ''
+    generation: '',
+    results: ''
   }),
 
   mounted() {
@@ -90,7 +91,6 @@ export default {
       const urlPokemon = `${process.env.VUE_APP_API_URL}/pokemon`
 
       const payload = await axios.get(url)
-      console.log('payload', payload)
       const promisePayload = await Promise.all(payload.data.pokemon_species.map(item => this.fetchPokemonInfo(`${urlPokemon}/${item.name}`)))
       
       this.pokemons = promisePayload.map(item => {
@@ -115,10 +115,14 @@ export default {
       const results = this.filter 
         ? this.pokemons.filter(pokemon => pokemon.name.includes(this.filter.toLowerCase())) 
         : this.pokemons
-
       this.filtered = results
       this.results = results.length
-    }
+    },
+
+
+		goToRoute(route) {
+			this.$router.push(`/generation/${this.id}/pokemons/${this.idPokemon}`)
+		}
   }
 }
 </script>

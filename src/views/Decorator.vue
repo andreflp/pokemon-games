@@ -8,12 +8,11 @@
 </template>
 
 <script>
-import Toolbar from '@/components/Toolbar'
 export default {
 	name: 'decorator',
 
 	components: {
-		Toolbar
+		Toolbar: () => import('@/components/Toolbar')
 	}
 
 }
