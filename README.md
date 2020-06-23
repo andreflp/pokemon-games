@@ -10,8 +10,9 @@
 
 ### Run application locally
 ```
-yarn serve
 yarn install
+yarn serve
+
 ```
 
 ### Build for production
