@@ -12,7 +12,6 @@
 ```
 yarn install
 yarn serve
-
 ```
 
 ### Build for production
